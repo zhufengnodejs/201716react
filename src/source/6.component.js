@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//属性一般用来表示组件实例的固有的东西。
+//人的性别 血型 DNA。自己可以读，但是不能改
 function Avatar(props){
+    //Cannot assign to read only property 'name' of object
+    //props.name = 'xxxx';
     return <img className="Avatar"
          src={props.avatarUrl}
          alt={props.name}
@@ -9,15 +13,21 @@ function Avatar(props){
 function formatDate(date){
     return date.toLocaleString();
 }
+function UserInfo(props){
+    return (
+        <div className="UserInfo">
+            <Avatar {...props.user}/>
+            <div className="UserInfo-name">
+                {props.user.name}
+            </div>
+        </div>
+    )
+}
+//author user
 function Comment(props) {
     return (
         <div className="Comment">
-            <div className="UserInfo">
-                <Avatar {...props.author}/>
-                <div className="UserInfo-name">
-                    {props.author.name}
-                </div>
-            </div>
+            <UserInfo user={props.author}/>
             <div className="Comment-text">
                 {props.text}
             </div>
