@@ -1,1 +1,1 @@
-import './source/4.clock';
+import './source/5.component';
