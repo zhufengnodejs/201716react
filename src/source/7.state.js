@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+//元素 组件 属性 状态 事件
 /**
  * 组件和状态都是组件自身的数据，可以读取
  * 1. 属性是由父组件传入自身，不能修改。
