@@ -12,14 +12,16 @@ export default class MessageForm extends Component{
             content:''//内容
         }
     }
-    handleSubmit = ()=>{
-
+    handleSubmit = (event)=>{
+        event.preventDefault();//阻止默认事件 阻止 页面刷新
+        this.props.addMessage({...this.state,createAt:new Date()});
     }
     //当我们在文本框中进行输入的时候，会执行此方法
     /**
      * 1. 写二个函数
      * 2. 把要修改的参数名传过来
      * 3. 给DOM增加一个自定义属性进行区分
+     * 4. 绑定参数 this.handleChange.bind(this,'username')
      */
     handleChange = (event)=>{
       let val = event.target.value;//取得事件源的value值

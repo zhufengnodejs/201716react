@@ -11,6 +11,9 @@ export default class MessageApp extends Component{
             {username:'李四',content:'明天更热',createAt:new Date()}
         ]};
     }
+    addMessage = (message)=>{
+      this.setState({messages:[...this.state.messages,message]});
+    }
     render(){
         return (
             <div className="container">
@@ -24,7 +27,7 @@ export default class MessageApp extends Component{
                                 <MessageList messages = {this.state.messages}/>
                             </div>
                             <div className="panel-footer">
-                                <MessageForm/>
+                                <MessageForm addMessage={this.addMessage}/>
                             </div>
                         </div>
                     </div>
