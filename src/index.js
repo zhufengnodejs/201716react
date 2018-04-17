@@ -1,1 +1,1 @@
-import './source/8.counter';
+import './messages/index';
