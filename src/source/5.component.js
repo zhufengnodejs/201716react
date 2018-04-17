@@ -13,7 +13,21 @@ import ReactDOM from 'react-dom';
 }*/
 //通过类来定义一个组件，类必须提供一个render方法，
 //如何把一个函数式组件变成一个类组件，先声明一个类，类名就是函数名，类里定义一个render方法，里面的函数体就是原来的函数体，也要返回一个React元素
+/**
+ * 类组件是如何渲染的
+ * 1. 如果发现Welcome是一个类
+ * 2. 先封装属性对象 {name:'zfpx',age:9}
+ * 3. 创建一个Welcome类的实例,   new Welcome({name:'zfpx',age:9})
+ * 4. 调用实例的render方法返回一个React元素
+ * 5. 渲染此React元素到真实DOM上
+ */
 class Welcome extends React.Component{
+    constructor(props){
+        super(props);
+        //会把得到的属性对象传递给实例的props属性
+        //this.props = props;
+    }
+    //render一定要返回并且只能返回一个顶级元素
     render(){
         return <h1>hello {this.props.name}</h1>;
     }

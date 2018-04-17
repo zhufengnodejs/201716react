@@ -1,1 +1,1 @@
-import './source/5.component';
+import './source/6.component';
