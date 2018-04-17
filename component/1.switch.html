@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .switch {
+            -webkit-appearance: none;
+            width: 50px;
+            border: 1px solid #DFDFDF;
+            border-radius: 30px;
+            height: 32px;
+            position: relative;
+            outline: none;
+            transition: all .2s linear;
+        }
+
+        .switch:checked {
+            box-shadow: #343CFF 0 0 16px 16px inset;
+            transition: all .2s linear;
+        }
+
+        .switch:before {
+            content: '';
+            position: absolute;
+            background: #FFF;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            box-shadow: 1px 1px 2px 0 #DFDFDF;
+            transition: all .2s linear;
+        }
+
+        .switch:checked:before {
+            left: 18px;
+            transition: all .2s linear;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+
+    <script>
+        class Component {
+            constructor(props) {
+                this.props = props;
+            }
+
+            // 1.将字符串进行封装，字符串不能绑事件
+            createDOMFromString(str) {
+                let oDiv = document.createElement('div');
+                oDiv.innerHTML = str;
+                return oDiv.firstElementChild;
+            }
+
+            setState(partialState) {
+                this.state = partialState;
+                let oldEle = this.element;
+                let newEle = this._render();
+                oldEle.parentNode.replaceChild(newEle, oldEle);
+            }
+            _render(){
+                this.element = this.createDOMFromString(this.render());
+                this.init&&this.init(this.element);
+                return this.element;
+            }
+
+            mount(container){
+                this._render();
+                container.appendChild(this.element);
+            }
+        }
+
+        class Switch extends Component {
+            constructor(props) {
+                super(props);
+                this.state = {checked: false};
+            }
+
+            handleChange() {
+                this.setState({checked: !this.state.checked});
+            }
+
+            init(element){
+                element.querySelector('.switch').addEventListener('change', this.handleChange.bind(this));
+            }
+
+            render() {
+                return (
+                    `
+                      <div>
+                          ${this.props.name}
+                          <input type="checkbox" class="switch" ${this.state.checked ? "checked" : ""}>
+                          <p class="text">${this.state.checked ? '开' : '关'}</p>
+                      </div>
+                    `
+                )
+            }
+        }
+
+        let app = document.querySelector('.app');
+        new Switch({name:'zfpx'}).mount(app);
+    </script>
+</div>
+</body>
+</html>

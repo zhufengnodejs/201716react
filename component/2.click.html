@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="app">
+<div class="app2">
+    <script>
+        class Component {
+            constructor(props) {
+                this.props = props;
+            }
+
+            // 1.将字符串进行封装，字符串不能绑事件
+            createDOMFromString(str) {
+                let oDiv = document.createElement('div');
+                oDiv.innerHTML = str;
+                return oDiv.firstElementChild;
+            }
+
+            setState(partialState) {
+                this.state = partialState;
+                let oldEle = this.element;
+                let newEle = this._render();
+                oldEle.parentNode.replaceChild(newEle, oldEle);
+            }
+            _render(){
+                this.element = this.createDOMFromString(this.render());
+                this.init&&this.init(this.element);
+                return this.element;
+            }
+
+            mount(container){
+                this._render();
+                container.appendChild(this.element);
+            }
+        }
+
+        class Toggle extends Component {
+            constructor(props) {
+                super(props);
+                this.state = {toggle: false};
+            }
+
+            handleChange() {
+                this.setState({toggle: !this.state.toggle});
+            }
+
+            init(element){
+                element.querySelector('#toggle').addEventListener('click', this.handleChange.bind(this));
+            }
+
+            render() {
+                return (
+                    `
+                      <div>
+                          <button id="toggle">
+                             ${this.state.toggle?'关':'开'}
+                          </button>
+                      </div>
+                    `
+                )
+            }
+        }
+
+        let app = document.querySelector('.app');
+        let app2 = document.querySelector('.app2');
+        new Toggle({name:'zfpx'}).mount(app);
+        new Toggle({name:'zfpx'}).mount(app2);
+    </script>
+</div>
+</body>
+</html>

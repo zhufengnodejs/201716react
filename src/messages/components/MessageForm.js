@@ -15,6 +15,7 @@ export default class MessageForm extends Component{
     handleSubmit = (event)=>{
         event.preventDefault();//阻止默认事件 阻止 页面刷新
         this.props.addMessage({...this.state,createAt:new Date()});
+        this.setState({content:''});
     }
     //当我们在文本框中进行输入的时候，会执行此方法
     /**
