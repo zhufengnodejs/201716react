@@ -12,11 +12,16 @@ import './3.jsx.css'
  *
  */
 let style = {border:'1px solid green'};
+let url = "https://www.baidu.com/img/bd_logo1.png?where=super";
+let input = "<script>while(true){}</script>";
 render(<div>
+    <div>{input}</div>
     <label htmlFor="username" style={style}>username</label>
     <input type="text" id="username"/>
     <p className={'content'}>content</p>
     <button tabIndex="1">1</button>
     <button tabIndex={"3"}>3</button>
     <button tabIndex="2">2</button>
+    <img src={url}/>
+
 </div>,document.querySelector('#root'));

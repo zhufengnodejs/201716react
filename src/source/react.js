@@ -18,7 +18,7 @@ class Element{
 
       }
       this.children.forEach(child=>{
-         let childEle = (child instanceof Element)?child.render():document.createTextNode(child);
+         let childEle = (child instanceof Element)?child.render():document.createTextNode(child.replace('<',';lt&').replace('>',';gt&'));
          element.appendChild(childEle);
       });
       return element;
