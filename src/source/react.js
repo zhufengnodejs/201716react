@@ -10,7 +10,12 @@ class Element{
       let element = document.createElement(this.type);//创建真实DOM元素
       //把虚拟 DOM上的属性一一赋给真实DOM
       for(let attr in this.attrs){
-          element.setAttribute(attr,this.attrs[attr]);
+          if(attr == 'className'){
+              element.setAttribute('class',this.attrs[attr]);
+          }else{
+              element.setAttribute(attr,this.attrs[attr]);
+          }
+
       }
       this.children.forEach(child=>{
          let childEle = (child instanceof Element)?child.render():document.createTextNode(child);
