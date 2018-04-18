@@ -12,24 +12,21 @@ export default class Slider extends Component{
     }
     //移动的距离
     turn = (step)=>{
-        let index = this.state.index+step;
+        let index = this.state.index+step;//得到新的索引
         if(index>=this.props.images.length+1){
-            this.sliders.style.transitionDuration = '0s';
-            this.sliders.style.left = '0px';
+            this.sliders.style.transitionDuration = '0s';//去掉动画
+            this.sliders.style.left = '0px';//改变left值
             //强行重绘 重排,重新计算left
             window.getComputedStyle(this.sliders,null).left;
             //DOM是有优化的
             this.sliders.style.transition = `left ${this.props.speed}s linear`;
             index = 1;
-            return  this.setState({index});
-        }
-        if(index<0){
+        }else if(index<0){
             this.sliders.style.transitionDuration = '0s';
             this.sliders.style.left = this.props.images.length*-400+'px';
             window.getComputedStyle(this.sliders,null).left;
             this.sliders.style.transition = `left ${this.props.speed}s linear`;
             index = this.props.images.length-1;
-            return  this.setState({index});
         }
         this.setState({index});
     }
@@ -43,7 +40,6 @@ export default class Slider extends Component{
         },this.props.delay*1000);
     }
     render(){
-
         return (
             <div
                 className="slider-wrapper"
