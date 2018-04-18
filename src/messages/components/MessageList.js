@@ -1,17 +1,12 @@
 import React,{Component} from 'react';
+import Message from './Message';
 export default class MessageList extends Component{
     render(){
         return (
             <ul className="list-group">
                 {
                     this.props.messages.map((message)=>(
-                        <li key={message.id} className="list-group-item">
-                            {message.username}:{message.content}
-                            <button
-                                onClick={()=>this.props.delMessage(message.id)}
-                                className="btn btn-danger btn-xs">删除</button>
-                            <span className="pull-right">{message.createAt.toLocaleString()}</span>
-                        </li>
+                        <Message delMessage={this.props.delMessage} key={message.id}  message={message}/>
                     ))
                 }
             </ul>
