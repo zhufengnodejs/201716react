@@ -1,1 +1,1 @@
-import './messages/index';
+import './source2/3.mailbox';

@@ -9,14 +9,14 @@ class ToggleBtn extends Component{
         this.setState({isToggleOn:!this.state.isToggleOn});
     }
     componentDidMount(){
-        this.ele.querySelector('#content').addEventListener('click',this.handleClick.bind(this));
+        this.ele.querySelector('.content').addEventListener('click',this.handleClick.bind(this));
     }
     //用来表明页面上内容的样子
     render(){
         console.log(this.props);
        return (
-           `<button id="toggleBtn">${this.props.name}:${this.state.isToggleOn?'关':'开'}
-      <span id="content">内容</span>
+           `<button class="toggleBtn">${this.props.name}:${this.state.isToggleOn?'关':'开'}
+      <span class="content">内容</span>
 </button>`
        )
     }
