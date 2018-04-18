@@ -6,12 +6,11 @@
 </head>
 <body>
 <div id="root"></div>
-
+<script src="Component.js"></script>
 <script src="toggle.js"></script>
 <script>
  let root = document.querySelector('#root');
- root.appendChild(new ToggleBtn().render());
- root.appendChild(new ToggleBtn().render());
+ new ToggleBtn({name:'zfpx'}).mount(root);
 </script>
 </body>
 </html>
