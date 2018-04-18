@@ -5,8 +5,20 @@ export default class Slider extends Component{
         this.state = {index:0};
     }
     componentDidMount(){
+       this.go();
+    }
+    //移动的距离
+    turn = (step)=>{
+        let index = this.state.index+step;
+        if(index>=this.props.images.length){
+            index =  0;
+        }
+        this.setState({index});
+    }
+    //开始启动自动轮播
+    go = ()=>{
         this.timerID = setInterval(()=>{
-            this.setState({index:this.state.index+1});
+            this.turn(1);
         },this.props.delay*1000);
     }
     render(){
@@ -16,11 +28,14 @@ export default class Slider extends Component{
            transition:`left ${this.props.speed}s linear`
         }
         return (
-            <div className="slider-wrapper">
+            <div
+                className="slider-wrapper"
+                onMouseOut={this.go}
+                onMouseOver={()=>clearInterval(this.timerID)}>
                 <ul className="sliders" style={style}>
                     {
                         this.props.images.map((image,index)=>(
-                            <li className="slider">
+                            <li key={index} className="slider">
                                 <img src={image}/>
                             </li>
                         ))
