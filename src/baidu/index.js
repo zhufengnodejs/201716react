@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css'
+
+/**
+ * 原生
+ * XMLHttpRequest
+ * jquery $.ajax
+ * fetch
+ * axios
+ */
 function jsonp(wd){
     return new Promise(function(resolve,reject){
         let script = document.createElement('script');
