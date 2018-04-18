@@ -1,1 +1,1 @@
-import './messages/index.js';
+import './slider/index.js';
