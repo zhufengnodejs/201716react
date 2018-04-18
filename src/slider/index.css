@@ -11,13 +11,13 @@ ul,li{
     margin:100px auto;
     border:5px solid red;
     position: relative;
+    overflow: hidden;
 }
 .sliders{
    position: absolute;
    left:0;
    top:0;
    height:300px;
-   width:1200px;
 }
 .sliders .slider{
     width:400px;
