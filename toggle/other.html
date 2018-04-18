@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="toggleBtn">开</button>
+<script>
+    let isToggleOn = false;//开关的默认状态
+    let toggleBtn = document.querySelector('#toggleBtn');
+    toggleBtn.addEventListener('click',function(){
+        isToggleOn = !isToggleOn;
+        toggleBtn.innerHTML = isToggleOn?'关闭':'打开';
+    })
+
+</script>
+</body>
+</html>

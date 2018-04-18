@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="toggle.js"></script>
+<script>
+ let root = document.querySelector('#root');
+ let toggleBtn = new ToggleBtn();
+ root.innerHTML = toggleBtn.render();
+</script>
+<script>
+  /*  let isToggleOn = false;//开关的默认状态
+    let toggleBtn = document.querySelector('#toggleBtn');
+    toggleBtn.addEventListener('click',function(){
+        isToggleOn = !isToggleOn;
+        toggleBtn.innerHTML = isToggleOn?'关':'开';
+    })*/
+</script>
+</body>
+</html>
