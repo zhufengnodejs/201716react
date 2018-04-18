@@ -28,3 +28,31 @@ ul,li{
     width:100%;
     height:100%;
 }
+.slider-arrows{
+    position: absolute;
+    top:50%;
+    margin-top:-15px;
+    height:30px;
+    width:100%;
+}
+.slider-arrows .slider-arrow{
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+    background-color: #EEE;
+    color:black;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+.slider-arrows .slider-arrow:hover{
+    background-color: #CCC;
+}
+.slider-arrow.arrow-left{
+    float:left;
+    margin-left:10px;
+}
+.slider-arrow.arrow-right{
+    float:right;
+    margin-right:10px;
+}

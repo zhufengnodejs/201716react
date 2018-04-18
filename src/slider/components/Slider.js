@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import SliderItems from './SliderItems';
+import SliderArrows from './SliderArrows';
 export default class Slider extends Component{
     constructor(){
         super();
@@ -22,25 +24,20 @@ export default class Slider extends Component{
         },this.props.delay*1000);
     }
     render(){
-        let style = {
-           width:this.props.images.length*400+'px',
-           left:this.state.index*-400+'px',
-           transition:`left ${this.props.speed}s linear`
-        }
+
         return (
             <div
                 className="slider-wrapper"
                 onMouseOut={this.go}
                 onMouseOver={()=>clearInterval(this.timerID)}>
-                <ul className="sliders" style={style}>
-                    {
-                        this.props.images.map((image,index)=>(
-                            <li key={index} className="slider">
-                                <img src={image}/>
-                            </li>
-                        ))
-                    }
-                </ul>
+                <SliderItems
+                    images = {this.props.images}
+                    index={this.state.index}
+                    speed={this.props.speed}
+                />
+                <SliderArrows
+
+                />
             </div>
         )
     }
