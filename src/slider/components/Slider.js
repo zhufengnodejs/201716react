@@ -15,6 +15,9 @@ export default class Slider extends Component{
         if(index>=this.props.images.length){
             index =  0;
         }
+        if(index<0){
+            index = this.props.images.length-1;
+        }
         this.setState({index});
     }
     //开始启动自动轮播
@@ -36,7 +39,7 @@ export default class Slider extends Component{
                     speed={this.props.speed}
                 />
                 <SliderArrows
-
+                    turn={this.turn}
                 />
             </div>
         )
