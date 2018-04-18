@@ -1,1 +1,1 @@
-import './slider/index.js';
+import './baidu';
