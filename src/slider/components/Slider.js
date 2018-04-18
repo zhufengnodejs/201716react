@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import SliderItems from './SliderItems';
 import SliderArrows from './SliderArrows';
+import SliderDots from './SliderDots';
 export default class Slider extends Component{
     constructor(){
         super();
@@ -40,6 +41,11 @@ export default class Slider extends Component{
                 />
                 <SliderArrows
                     turn={this.turn}
+                />
+                <SliderDots
+                    images = {this.props.images}
+                    index={this.state.index}
+                    turn = {this.turn}
                 />
             </div>
         )

@@ -56,3 +56,27 @@ ul,li{
     float:right;
     margin-right:10px;
 }
+
+.slider-dots{
+   height:20px;
+   position: absolute;
+   bottom:10px;
+   text-align: center;
+   width:100%;
+}
+.slider-dots .dot{
+    display:inline-block;
+    line-height: 20px;
+    width:20px;
+    height:20px;
+    border-radius: 50%;
+    background-color: #EEE;
+    margin-left:5px;
+    cursor: pointer;
+}
+.slider-dots .dot.active{
+    background-color:skyblue;
+}
+.slider-dots .dot:hover{
+    background-color: #CCC;
+}
