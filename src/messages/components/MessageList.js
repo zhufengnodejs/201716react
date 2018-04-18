@@ -7,7 +7,9 @@ export default class MessageList extends Component{
                     this.props.messages.map((message)=>(
                         <li key={message.id} className="list-group-item">
                             {message.username}:{message.content}
-                            <button className="btn btn-danger btn-xs">删除</button>
+                            <button
+                                onClick={()=>this.props.delMessage(message.id)}
+                                className="btn btn-danger btn-xs">删除</button>
                             <span className="pull-right">{message.createAt.toLocaleString()}</span>
                         </li>
                     ))

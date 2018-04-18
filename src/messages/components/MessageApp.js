@@ -12,6 +12,9 @@ export default class MessageApp extends Component{
     addMessage = (message)=>{
       this.setState({messages:[...this.state.messages,message]});
     }
+    delMessage= (id)=>{
+        this.setState({messages:this.state.messages.filter(item=>item.id != id)});
+    }
     render(){
         return (
             <div className="container">
@@ -22,7 +25,9 @@ export default class MessageApp extends Component{
                                 <h3 className="text-center">欢迎来到珠峰聊天室</h3>
                             </div>
                             <div className="panel-body">
-                                <MessageList messages = {this.state.messages}/>
+                                <MessageList
+                                    delMessage={this.delMessage}
+                                    messages = {this.state.messages}/>
                             </div>
                             <div className="panel-footer">
                                 <MessageForm addMessage={this.addMessage}/>

@@ -33,7 +33,7 @@ export default class MessageForm extends Component{
     componentDidMount(){
         //this.content就指向了真实的DOM
         this.content.focus();
-        this.username.value = localStorage.getItem('username')||'';
+        this.setState({username:localStorage.getItem('username')||''});
     }
     handleUsernameBlur = (event)=>{
         localStorage.setItem('username',event.target.value);
