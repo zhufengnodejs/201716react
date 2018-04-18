@@ -10,16 +10,8 @@
 <script src="toggle.js"></script>
 <script>
  let root = document.querySelector('#root');
- let toggleBtn = new ToggleBtn();
- root.innerHTML = toggleBtn.render();
-</script>
-<script>
-  /*  let isToggleOn = false;//开关的默认状态
-    let toggleBtn = document.querySelector('#toggleBtn');
-    toggleBtn.addEventListener('click',function(){
-        isToggleOn = !isToggleOn;
-        toggleBtn.innerHTML = isToggleOn?'关':'开';
-    })*/
+ root.appendChild(new ToggleBtn().render());
+ root.appendChild(new ToggleBtn().render());
 </script>
 </body>
 </html>
