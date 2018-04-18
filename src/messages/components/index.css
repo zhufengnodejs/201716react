@@ -1,0 +1,7 @@
+.list-group .list-group-item .btn-danger{
+    margin-left:10px;
+    display:none;
+}
+.list-group .list-group-item:hover .btn-danger{
+    display:inline-block;
+}

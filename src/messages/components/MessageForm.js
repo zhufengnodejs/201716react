@@ -14,7 +14,7 @@ export default class MessageForm extends Component{
     }
     handleSubmit = (event)=>{
         event.preventDefault();//阻止默认事件 阻止 页面刷新
-        this.props.addMessage({...this.state,createAt:new Date()});
+        this.props.addMessage({...this.state,id:Date.now(),createAt:new Date()});
         this.setState({content:''});
     }
     //当我们在文本框中进行输入的时候，会执行此方法
@@ -29,12 +29,23 @@ export default class MessageForm extends Component{
       let key = event.target.getAttribute('field');
       this.setState({[key]:val});
     }
+    //当组件被挂载到页面之后执行此生命周期方法
+    componentDidMount(){
+        //this.content就指向了真实的DOM
+        this.content.focus();
+        this.username.value = localStorage.getItem('username')||'';
+    }
+    handleUsernameBlur = (event)=>{
+        localStorage.setItem('username',event.target.value);
+    }
     render(){
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label className="control-label" htmlFor="username">用户名</label>
                     <input
+                        ref ={ref=>this.username = ref}
+                        onBlur={this.handleUsernameBlur}
                         field="username"
                         value={this.state.username}
                            onChange={this.handleChange}
@@ -43,6 +54,7 @@ export default class MessageForm extends Component{
                 <div className="form-group">
                     <label className="control-label" htmlFor="content">内容</label>
                     <textarea
+                        ref={ref=>this.content = ref}
                         field="content"
                         value={this.state.content}
                         onChange={this.handleChange}
