@@ -3,17 +3,29 @@ import MessageList from './MessageList';
 import MessageForm from './MessageForm';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css'
+const MESSAGES = 'messages';
 export default class MessageApp extends Component{
     constructor(props){
         super(props);
         //两个同级的子组件需要通信，不能直接通信，需要把状态定义在它们共同的父组件里
         this.state = {messages:[]};
     }
+    componentDidMount(){
+        let messagesStr = localStorage.getItem(MESSAGES);
+        let messages = messagesStr?JSON.parse(messagesStr):[];
+        this.setState({messages});
+    }
     addMessage = (message)=>{
-      this.setState({messages:[...this.state.messages,message]});
+      const messages = [...this.state.messages,message];
+      this.setState({messages},()=>{
+        localStorage.setItem(MESSAGES,JSON.stringify(messages));
+      });
     }
     delMessage= (id)=>{
-        this.setState({messages:this.state.messages.filter(item=>item.id != id)});
+        let messages= this.state.messages.filter(item=>item.id != id);
+        this.setState({messages},()=>{
+            localStorage.setItem(MESSAGES,JSON.stringify(messages));
+        });
     }
     render(){
         return (

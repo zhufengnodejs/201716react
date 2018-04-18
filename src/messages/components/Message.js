@@ -5,7 +5,7 @@ export default class Message extends Component{
         this.state = {time:''};
     }
     tick = ()=>{
-        let diff = (Date.now() - (+this.props.message.createAt))/1000;
+        let diff = (Date.now() - (+new Date(this.props.message.createAt)))/1000;
         this.setState({
             time: diff<60?`${Math.max(Math.floor(diff),1)}秒前`:`${Math.floor(diff/60)}分钟前`
         });
